@@ -92,10 +92,10 @@ git clone https://github.com/CryptoDev-Project/vps.git && cd vps
 
 ## Install the desired masternode and amount
 
-Use the *./install.sh* script with the desired crypto and masternode count as parameters, e.g. to install 4 FLS masternodes:
+Use the *./install.sh* script with the desired crypto and masternode count as parameters, e.g. to install 4 FUNC masternodes:
 
 ```
-./install.sh -p fls -c 4 -n 6
+./install.sh -p func -c 4 -n 6
 ```
 
 The script downloads, compiles and configures the system now. This will usually take between 5-15 minutes.
@@ -129,21 +129,21 @@ In 99% you can use the generated settings as is. The only value you MUST change 
 
 A script to enable masternode start at boot has been created at */usr/local/bin/activate_masternodes_${CODENAME}.sh* for your convenience. There is exactly one script per installed masternode crypto.
 
-Run it after you finished configuration, e.g. after a FLS installation do.
+Run it after you finished configuration, e.g. after a FUNC installation do.
 
 ```
-/usr/local/bin/activate_masternodes_fls
+/usr/local/bin/activate_masternodes_func
 ```     
 
 ## Last step, the controller
 
 To activate the new nodes in your _local_ (not the VPS) controller wallet, add the bind address entries with port to a file called "masternode.conf" as usual.
 
-     MN1 [2002:470:1111:1a4:51]:12270 KEY TX OUTPUT
-     MN2 [2003:470:1111:1a4:52]:12270 KEY TX OUTPUT
-     MN3 [2003:470:1111:1a4:53]:12270 KEY TX OUTPUT
+     MN1 [2002:470:1111:1a4:51]:12280 KEY TX OUTPUT
+     MN2 [2003:470:1111:1a4:52]:12280 KEY TX OUTPUT
+     MN3 [2003:470:1111:1a4:53]:12280 KEY TX OUTPUT
 
-To make this a bit easier for large installations, i implemented a small gimmick in the newest version. Now after the script has run, a partial of the "masternode.conf" file is generated and placed on the VPS eg for XIOS at "/tmp/fls_masternode.conf"
+To make this a bit easier for large installations, i implemented a small gimmick in the newest version. Now after the script has run, a partial of the "masternode.conf" file is generated and placed on the VPS eg for XIOS at "/tmp/func_masternode.conf"
 
 So you can take the contents from there and paste it into your local controller-wallets masternode.conf all that you need to add is the relevant pieces from "masternode outputs"
 
@@ -156,7 +156,7 @@ You get the idea, another step to a fully automated setup... ;-)
 If you want to check the status of your masternode, the best way is currently running the cli e.g. via
 
 ```
-/usr/local/bin/mue-cli -conf=/etc/masternodes/fls_n1.conf getinfo
+/usr/local/bin/func-cli -conf=/etc/masternodes/func_n1.conf getinfo
 
 {
   "version": 1000302,
